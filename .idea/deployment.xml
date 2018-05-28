@@ -2,13 +2,6 @@
 <project version="4">
   <component name="PublishConfigData">
     <serverData>
-      <paths name="pi@192.168.43.16:22">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/home/pi/weather-station" local="$PROJECT_DIR$" />
-          </mappings>
-        </serverdata>
-      </paths>
       <paths name="raspberry_bak">
         <serverdata>
           <mappings>
@@ -20,6 +13,13 @@
         <serverdata>
           <mappings>
             <mapping deploy="/weather-station" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="weather-station-emon">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/pi/weather-station" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>
