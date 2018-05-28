@@ -12,6 +12,8 @@ from grovepi import dht
 from matplotlib import pyplot
 from matplotlib.dates import date2num
 from dateutil import parser
+from urllib.request import urlopen
+from urllib.parse import quote
 
 app = Flask(__name__)
 
@@ -47,6 +49,15 @@ def update_db():
             graph_data()
 
             print("Temperature : %.02f / Humidite : %.02f / Heure : %s" % (temp_m, hum_m, datetime_m))
+
+            # EMONCMS
+            # On prépare les données
+            json = "{temp:" + "%.2f" % temp_m + ",humidity:" + "%.2f" % hum_m+ "}"
+            # On prépare l'URL
+            emonapikey = "3e48fb506d975511674f59465a7df345"
+            url = "http://emoncms.org/" + "input/post.json?node=1&apikey=" + emonapikey + "&json=" + quote(json)
+            # On envoie les données sur le serveur Emoncms
+            urlopen(url)
 
             # On ajoute une mesure toutes les 10s
             sleep(10)
