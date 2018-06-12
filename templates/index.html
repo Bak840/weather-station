@@ -2,11 +2,23 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+	<link rel="stylesheet" href="/static/index.css">
     <title>Météo TSE</title>
 </head>
 <body>
+    <nav>
+		<ul id="nav_list">
+ 			<li class="nav_element"><a href="http://192.168.0.25:5000/" class="nav_content">Acceuil</a>|</li>
+            <li class="nav_element"><a href="http://192.168.0.25/database/phpliteadmin.php" class="nav_content">phpLiteAdmin</a>|</li>
+ 			<li class="nav_element"><a href="http://192.168.0.25/emoncms/" class="nav_content">Emoncms</a>|</li>
+		</ul>
+	</nav>
     <h1>Température : {{ temperature }} °C / Humidité : {{ humidity }} %</h1>
     <img src="/static/img/graph.png" alt="Graph">
-    <a href="http://192.168.43.16/database/phpliteadmin.php">PHPLiteAdmin</a>
+    <br>
+    <div>
+        <iframe style="width:290px; height:200px;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://192.168.0.25/emoncms/vis/realtime?feedid=1&colour=ff0000&embed=1"></iframe>
+        <iframe style="width:290px; height:200px;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://192.168.0.25/emoncms/vis/realtime?feedid=2&colour=0080ff&embed=1"></iframe>
+    </div>
 </body>
 </html>

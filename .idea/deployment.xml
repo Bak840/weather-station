@@ -16,13 +16,6 @@
           </mappings>
         </serverdata>
       </paths>
-      <paths name="weather-station-emon">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/home/pi/weather-station" local="$PROJECT_DIR$" />
-          </mappings>
-        </serverdata>
-      </paths>
     </serverData>
   </component>
 </project>

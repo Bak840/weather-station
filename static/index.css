@@ -1,0 +1,25 @@
+#nav_list {
+    list-style-type: none;
+    text-align: center;
+    border-top-style: solid;
+    border-top-width: 3px;
+    border-bottom-style: solid;
+    border-bottom-width: 3px;
+}
+
+.nav_element {
+    display: inline;
+}
+
+.nav_content {
+    display: inline-block;
+    padding: 10px 10px;
+}
+
+body{
+    font-family: "Arial", Times, sans-serif;
+}
+
+iframe{
+    margin-left: 50px;
+}
