@@ -54,8 +54,8 @@ def update_db():
             # On prépare les données
             json = "{temp:" + "%.2f" % temp_m + ",humidity:" + "%.2f" % hum_m+ "}"
             # On prépare l'URL
-            emonapikey = "3e48fb506d975511674f59465a7df345"
-            url = "http://emoncms.org/" + "input/post.json?node=1&apikey=" + emonapikey + "&json=" + quote(json)
+            emonapikey = "7097377a438e1fa0403b767c7821a476"
+            url = "http://localhost/emoncms/input/post.json?node=1&apikey=" + emonapikey + "&json=" + quote(json)
             # On envoie les données sur le serveur Emoncms
             urlopen(url)
 
@@ -93,16 +93,16 @@ def graph_data():
     ax1.set_title("Evolution de la temperature et de l'humidite")
 
     # On configure l'axe X pour les dates des mesures
-    ax1.xaxis.set_major_formatter(matplotlib.dates.DateFormatter('%d.%m.%Y %H:%M'))
+    ax1.xaxis.set_major_formatter(matplotlib.dates.DateFormatter('%y.%m.%d %H:%M'))
 
     # On affiche la température sur l'axe Y
     ax1.set_ylabel("Temperature [C]")
-    ax1.plot_date(dates, temperature, '-', label="Temperature", color='b')
+    ax1.plot_date(dates, temperature, '-', label="Temperature", color='r')
 
     # On affiche l'humidité sur l'axe Y
     ax2 = ax1.twinx()
     ax2.set_ylabel("Humidity [% RH]")
-    ax2.plot_date(dates, humidity, '-', label="Humidite", color='g')
+    ax2.plot_date(dates, humidity, '-', label="Humidite", color='b')
 
     # On configure l'axe X pour afficher les dates des mesures
     fig.autofmt_xdate(rotation=60)
@@ -110,8 +110,8 @@ def graph_data():
 
     # On affiche la grille et les légendes
     ax1.grid(True)
-    ax1.legend(loc='best', framealpha=0.5)
-    ax2.legend(loc='best', framealpha=0.5)
+    ax1.legend(loc=2, framealpha=0.5)
+    ax2.legend(loc=1, framealpha=0.5)
 
     # On sauvegarde le graphique
     pyplot.savefig("/home/pi/weather-station/static/img/graph.png")
@@ -125,8 +125,9 @@ if __name__ == "__main__":
               TEMPERATURE        REAL    NOT NULL,
               HUMIDITY           REAL    NOT NULL,
               DATETIME_M               TEXT    NOT NULL);''')
+    #après chaque opération, il faut fermer la base
     conn.close()
     # On démarre le thread d'arrière-plan pour mettre à jour la BDD et le graphique
     Thread(target=update_db).start()
     # On démarre le serveur Flask sur le port 5000
-    app.run(host='192.168.43.16', debug=False)
+    app.run(host='192.168.0.25', debug=False)
