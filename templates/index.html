@@ -6,19 +6,40 @@
     <title>Météo TSE</title>
 </head>
 <body>
+    <div>
+        <a href="https://www.telecom-st-etienne.fr/" target="_blank"> <img src="https://www.telecom-st-etienne.fr/wp-content/uploads/sites/3/2015/12/logo_tse_H_BL_web1-1.png"/><br></a>
+        <a id="membres"><b>Projet électronique réalisé par Bakoura IBRAHIMA et Khadimou Rassoul DIOP</b></a>
+    </div>
     <nav>
 		<ul id="nav_list">
  			<li class="nav_element"><a href="http://192.168.0.25:5000/" class="nav_content">Acceuil</a>|</li>
             <li class="nav_element"><a href="http://192.168.0.25/database/phpliteadmin.php" class="nav_content">phpLiteAdmin</a>|</li>
  			<li class="nav_element"><a href="http://192.168.0.25/emoncms/" class="nav_content">Emoncms</a>|</li>
 		</ul>
-	</nav>
-    <h1>Température : {{ temperature }} °C / Humidité : {{ humidity }} %</h1>
-    <img src="/static/img/graph.png" alt="Graph">
+    </nav>
+    <h1 id="actu">Température : {{ temperature }} °C / Humidité : {{ humidity }} %</h1>
     <br>
-    <div>
-        <iframe style="width:290px; height:200px;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://192.168.0.25/emoncms/vis/realtime?feedid=1&colour=ff0000&embed=1"></iframe>
-        <iframe style="width:290px; height:200px;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://192.168.0.25/emoncms/vis/realtime?feedid=2&colour=0080ff&embed=1"></iframe>
+    <div id="graph">
+        <table>
+            <tr>
+                <img src="/static/img/graph.png" alt="Graph">
+            </tr>
+            <tr>
+                <td>
+                    <iframe style="width:290px; height:200px;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://192.168.0.25/emoncms/vis/realtime?feedid=1&colour=ff0000&embed=1"></iframe>
+                </td>
+                <td>
+                    <iframe style="width:290px; height:200px;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://192.168.0.25/emoncms/vis/realtime?feedid=2&colour=0080ff&embed=1"></iframe>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="info">
+        <ul> <h3><ins> Materiels utilisé :</ins></h3>
+            <li><a>Raspberry Pi 3<br></a><img title="Raspberry Pi 3" src="/static/img/rpi3.jpg" alt="Raspberry Pi 3"/></li>
+            <li><a>Carte d'extension GrovePi<br></a><img title="Carte d'extension GrovePi" src="/static/img/grovepi.jpg" alt="Carte d'extension GrovePi"/></li>
+            <li><a>Capteur DHT22</a><br><img title="Capteur DHT22" src="/static/img/dht22.jpg" alt="Capteur DHT22"/></li>
+        </ul>
     </div>
 </body>
 </html>
