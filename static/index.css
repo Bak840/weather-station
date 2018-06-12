@@ -20,6 +20,19 @@ body{
     font-family: "Arial", Times, sans-serif;
 }
 
-iframe{
-    margin-left: 50px;
+#membres{
+    margin: 10px;
+    font-size: 25px;
+}
+
+#actu{
+    text-align:center;
+}
+
+#graph{
+    float: right;
+}
+
+#info{
+    float:left;
 }
